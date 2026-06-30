@@ -20,7 +20,10 @@ export default function AdminDoctors({ doctors, setDoctors, getDoctors }) {
   const onSubmit = async (doctor) => {
     try {
       setLoading(true);
-      const res = await axios.post("http://localhost:3000/add-doctor", doctor);
+      const res = await axios.post(
+        `${import.meta.env.VITE_API_URL}/add-doctor`,
+        doctor,
+      );
       setDoctors((prev) => [...prev, res.data]);
       toast.success("تم اضافة الطبيب بنجاح");
       reset();
@@ -35,7 +38,7 @@ export default function AdminDoctors({ doctors, setDoctors, getDoctors }) {
   const deleteDoctor = async (id) => {
     try {
       setLoading(true);
-      await axios.delete(`http://localhost:3000/delete-doctor/${id}`);
+      await axios.delete(`${import.meta.env.VITE_API_URL}/delete-doctor/${id}`);
       setDoctors((prev) => prev.filter((doctor) => doctor.id !== id));
       toast.success("تم حذف الطبيب بنجاح");
     } catch (error) {

@@ -22,7 +22,7 @@ function App() {
 
   const getDoctors = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/doctors");
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/doctors`);
       setDoctors(res.data);
     } catch (error) {
       console.log(error);
@@ -31,7 +31,9 @@ function App() {
 
   const getAppointments = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/appointements");
+      const res = await axios.get(
+        `${import.meta.env.VITE_API_URL}/appointements`,
+      );
       setAppointments(res.data);
     } catch (error) {
       console.log(error);

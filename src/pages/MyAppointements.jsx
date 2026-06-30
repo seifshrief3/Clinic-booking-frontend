@@ -9,7 +9,9 @@ export default function MyAppointments() {
 
   const getMyAppointments = async (id) => {
     try {
-      const res = await axios.get(`http://localhost:3000/appointements/${id}`);
+      const res = await axios.get(
+        `${import.meta.env.VITE_API_URL}/appointements/${id}`,
+      );
       setMyAppointments(res.data);
       console.log(res.data);
     } catch (error) {

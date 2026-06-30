@@ -19,11 +19,14 @@ export default function SetAppointment({ doctors, getDoctors }) {
 
   const onSubmit = async (data) => {
     try {
-      const res = await axios.post("http://localhost:3000/set-appointement", {
-        ...data,
-        doctor_id: selectedDoctorId,
-        user_id: user.id,
-      });
+      const res = await axios.post(
+        `${import.meta.env.VITE_API_URL}/set-appointement`,
+        {
+          ...data,
+          doctor_id: selectedDoctorId,
+          user_id: user.id,
+        },
+      );
       reset();
       toast.success("تم حجز الموعد بنجاح");
     } catch (error) {

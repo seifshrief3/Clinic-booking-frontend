@@ -10,9 +10,12 @@ export default function Appointments({
 }) {
   const updateStatus = async (id, status) => {
     try {
-      await axios.put(`http://localhost:3000/edit-appointement/${id}`, {
-        status,
-      });
+      await axios.put(
+        `${import.meta.env.VITE_API_URL}/edit-appointement/${id}`,
+        {
+          status,
+        },
+      );
 
       setAppointments((prev) =>
         prev.map((appointment) =>
